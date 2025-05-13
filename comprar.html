@@ -18,13 +18,31 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        .purchase-form {
+        .purchase-container {
             background-color: #fff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+            max-width: 900px; /* Ajustamos el ancho máximo para el diseño de dos columnas */
             margin: 0 auto;
+            display: flex; /* Usamos flexbox para el diseño de dos columnas */
+            gap: 30px; /* Espacio entre las columnas */
+        }
+        .product-image-container {
+            flex: 1; /* La imagen ocupará 1 parte del espacio disponible */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            overflow: hidden; /* Para que la imagen no se salga del contenedor */
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .purchase-form-container {
+            flex: 1; /* El formulario ocupará 1 parte del espacio disponible */
         }
         .form-group {
             margin-bottom: 20px;
@@ -70,7 +88,6 @@
         a:hover {
             text-decoration: underline;
         }
-
         #payment-info {
             display: none;
             margin-top: 20px;
@@ -80,24 +97,20 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             text-align: center;
         }
-
         #payment-info h3 {
             color: #34495e;
             margin-top: 0;
             margin-bottom: 15px;
         }
-
         #payment-info .form-group {
             margin-bottom: 15px;
         }
-
         #payment-info label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #34495e;
         }
-
         #payment-info input[type="text"] {
             width: 100%;
             padding: 10px;
@@ -105,21 +118,18 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
         #payment-info button {
-            background-color: #27ae60; 
+            background-color: #27ae60;
             margin-top: 15px;
         }
-
         #pago-enviado {
             display: none;
             color: green;
             font-weight: bold;
             margin-top: 15px;
         }
-
         .continue-payment-button {
-            background-color: #5cb85c; 
+            background-color: #5cb85c;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -133,7 +143,6 @@
             text-align: center;
             text-decoration: none;
         }
-
         .continue-payment-button:hover {
             background-color: #4cae4c;
         }
@@ -142,43 +151,49 @@
 <body>
     <h1>Realizar Pedido</h1>
     <p class="selected-option">Opción seleccionada: <span id="selected-option-name"></span></p>
-    <div class="purchase-form">
-        <form action="#" method="post">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="direccion">Dirección de Envío:</label>
-                <input type="text" id="direccion" name="direccion" required>
-            </div>
-            <div class="form-group">
-                <label for="cantidad">Cantidad:</label>
-                <select id="cantidad" name="cantidad">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-            <a href="#" class="continue-payment-button" onclick="mostrarPago()">Continuar al Pago</a>
-            <div id="payment-info">
-                <h3>Información de Pago</h3>
+    <div class="purchase-container">
+        <div class="product-image-container">
+            <img id="product-image" src="" alt="Imagen del producto" class="product-image">
+        </div>
+        <div class="purchase-form-container">
+            <form action="#" method="post">
                 <div class="form-group">
-                    <label for="tarjeta">Número de Tarjeta:</label>
-                    <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
                 </div>
                 <div class="form-group">
-                    <label for="cvv">CVV:</label>
-                    <input type="text" id="cvv" name="cvv" placeholder="XXX">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-                <button type="button" onclick="procesarPago()">Pagar Ahora</button>
-                <p id="pago-enviado" style="display: none; color: green; font-weight: bold; margin-top: 15px;">¡Pedido Enviado!</p>
-            </div>
-            <button type="submit" style="display: none;">Finalizar Pedido</button> </form>
+                <div class="form-group">
+                    <label for="direccion">Dirección de Envío:</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <select id="cantidad" name="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <a href="#" class="continue-payment-button" onclick="mostrarPago()">Continuar al Pago</a>
+                <div id="payment-info">
+                    <h3>Información de Pago</h3>
+                    <div class="form-group">
+                        <label for="tarjeta">Número de Tarjeta:</label>
+                        <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="XXX">
+                    </div>
+                    <button type="button" onclick="procesarPago()">Pagar Ahora</button>
+                    <p id="pago-enviado" style="display: none; color: green; font-weight: bold; margin-top: 15px;">¡Pedido Enviado!</p>
+                </div>
+                <button type="submit" style="display: none;">Finalizar Pedido</button>
+            </form>
+        </div>
     </div>
     <p style="text-align: center; margin-top: 20px;"><a href="index.html">Volver a inicio</a></p>
 
@@ -189,7 +204,6 @@
         }
 
         function procesarPago() {
-            
             alert('Pago procesado. ¡Gracias por tu compra!');
             document.getElementById('payment-info').style.display = 'none';
             document.getElementById('pago-enviado').style.display = 'block';
@@ -198,11 +212,23 @@
         const urlParams = new URLSearchParams(window.location.search);
         const opcion = urlParams.get('opcion');
         const opcionNombreSpan = document.getElementById('selected-option-name');
+        const productImage = document.getElementById('product-image');
 
         if (opcion) {
-            opcionNombreSpan.textContent = opcion.charAt(0).toUpperCase() + opcion.slice(1);
+            opcionNombreSpan.textContent = opcion.charAt(0).toUpperCase() + opcion.slice(1).replace('_', ' '); // Mejora la visualización del nombre
+            // Aquí determinamos la imagen a mostrar según la opción
+            if (opcion === 'silver_pro') {
+                productImage.src = 'lapiz_silver_pro.jpg'; // Ruta a la imagen del Silver Pro
+            } else if (opcion === 'funda') {
+                productImage.src = 'funda_lapiz.jpg'; // Ruta a la imagen de la funda
+            } else if (opcion === 'tintas') {
+                productImage.src = 'tintas_recambio.jpg'; // Ruta a la imagen de las tintas
+            } else {
+                productImage.src = 'placeholder.png'; // Imagen por defecto si no se reconoce la opción
+            }
         } else {
             opcionNombreSpan.textContent = "No se ha especificado la opción";
+            productImage.src = 'placeholder.png'; // Imagen por defecto si no hay opción
         }
     </script>
 </body>
