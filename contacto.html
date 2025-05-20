@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contacto - VozALetra™</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            transition: opacity 0.3s ease;
+        }
+        body.fade-out {
+            opacity: 0;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center; /* Centramos la imagen debajo */
+        }
+        .contact-info p strong {
+            font-weight: bold;
+        }
+        .store-image {
+            max-width: 100%; /* La imagen no excederá el ancho del contenedor */
+            height: auto;
+            margin-top: 20px; /* Espacio entre el texto y la imagen */
+            border-radius: 8px; /* Opcional: bordes redondeados */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+        }
+        a {
+            color: #e67e22;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Contáctanos!</h1>
+    <div class="contact-info">
+        <p>Si tienes alguna pregunta o necesitas más información sobre nuestro increíble producto, no dudes en ponerte en contacto con nosotros.</p>
+        <p>Puedes enviarnos un correo electrónico a: <strong><a href="mailto:VozALetra@support.com">VozALetra@support.com</a></strong></p>
+        <p>También puedes llamarnos al: <strong>+34 697 95 23 56</strong></p>
+        <p>O visítanos en nuestra oficina en: <strong>Calle Larios 12</strong></p>
+        <img src="tienda_malaga.jpg" alt="Tienda en Málaga" class="store-image" />
+    </div>
+    <p style="text-align: center; margin-top: 20px;">
+        <a href="index.html" id="volver-inicio">Volver a inicio</a>
+    </p>
+
+    <script>
+        document.getElementById('volver-inicio').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 300);
+        });
+    </script>
+</body>
+</html>

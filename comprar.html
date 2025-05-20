@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Comprar - Mi Producto Impresionante</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .purchase-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+
+            /* Animaciones para tamaño y posición */
+            transition: max-width 0.5s ease, transform 0.5s ease;
+        }
+        .purchase-container.payment-visible {
+            max-width: 1100px; /* más ancho */
+            transform: translateX(-50px); /* desplaza a la izquierda */
+        }
+        .product-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+        .purchase-container.payment-visible .product-image-container {
+            transform: translateX(-30px);
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .purchase-form-container {
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"], #payment-info button {
+            background-color: #e67e22;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover, #payment-info button:hover {
+            background-color: #d35400;
+        }
+        p.selected-option {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #payment-info {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        #payment-info.visible {
+            display: block;
+        }
+        #payment-info h3 {
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        #payment-info .form-group {
+            margin-bottom: 15px;
+        }
+        #payment-info label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        #payment-info input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #payment-info button {
+            background-color: #27ae60;
+            margin-top: 15px;
+        }
+        #pago-enviado {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        #pago-enviado.visible {
+            display: block;
+        }
+        .continue-payment-button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            box-sizing: border-box;
+            text-align: center;
+            text-decoration: none;
+        }
+        .continue-payment-button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Realizar Pedido</h1>
+    <p class="selected-option">Opción seleccionada: <span id="selected-option-name"></span></p>
+    <div class="purchase-container">
+        <div class="product-image-container">
+            <img id="product-image" src="" alt="Imagen del producto" class="product-image" />
+        </div>
+        <div class="purchase-form-container">
+            <form action="#" method="post" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección de Envío:</label>
+                    <input type="text" id="direccion" name="direccion" required />
+                </div>
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <select id="cantidad" name="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <a href="#" class="continue-payment-button" onclick="mostrarPago(); return false;">Continuar al Pago</a>
+                <div id="payment-info">
+                    <h3>Información de Pago</h3>
+                    <div class="form-group">
+                        <label for="tarjeta">Número de Tarjeta:</label>
+                        <input type="text" id="tarjeta" name="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="XXX" />
+                    </div>
+                    <button type="button" onclick="procesarPago()">Pagar Ahora</button>
+                    <p id="pago-enviado">¡Pedido Enviado!</p>
+                </div>
+                <button type="submit" style="display: none;">Finalizar Pedido</button>
+            </form>
+        </div>
+    </div>
+    <p style="text-align: center; margin-top: 20px;"><a href="index.html" id="volver-inicio">Volver a inicio</a></p>
+
+    <script>
+        function mostrarPago() {
+            document.getElementById('payment-info').classList.add('visible');
+            document.querySelector('.continue-payment-button').style.display = 'none';
+            document.getElementById('pago-enviado').classList.remove('visible');
+
+            // Añadir clase para animación del contenedor e imagen
+            document.querySelector('.purchase-container').classList.add('payment-visible');
+        }
+
+        function procesarPago() {
+            alert('Pago procesado. ¡Gracias por tu compra!');
+            const paymentInfo = document.getElementById('payment-info');
+            paymentInfo.classList.remove('visible');
+
+            const pagoEnviado = document.getElementById('pago-enviado');
+            pagoEnviado.classList.add('visible');
+
+            document.querySelector('.continue-payment-button').style.display = 'block';
+
+            // Quitar clase para volver al tamaño y posición original
+            document.querySelector('.purchase-container').classList.remove('payment-visible');
+        }
+
+        // Para animar el enlace "Volver a inicio"
+        document.getElementById('volver-inicio').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 300);
+        });
+
+        // Código para cargar imagen y nombre de opción según URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const opcion = urlParams.get('opcion');
+        const opcionNombreSpan = document.getElementById('selected-option-name');
+        const productImage = document.getElementById('product-image');
+
+        if (opcion) {
+            opcionNombreSpan.textContent = opcion.charAt(0).toUpperCase() + opcion.slice(1).replace('_', ' ');
+            if (opcion === 'silver_pro') {
+                productImage.src = 'lapiz_silver_pro_fondo.jpg';
+            } else if (opcion === 'funda') {
+                productImage.src = 'funda_lapiz.jpg';
+            } else if (opcion === 'tintas') {
+                productImage.src = 'tintas_recambio.jpg';
+            } else {
+                productImage.src = 'placeholder.png';
+            }
+        } else {
+            opcionNombreSpan.textContent = "No se ha especificado la opción";
+            productImage.src = 'placeholder.png';
+        }
+    </script>
+    <style>
+        /* Añadimos efecto fade-out para animar "Volver a inicio" */
+        body.fade-out {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style

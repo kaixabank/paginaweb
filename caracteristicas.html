@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Características - VozALetra Silver Pro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        header {
+            background-color: #fff;
+            color: #2c3e50;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #34495e;
+        }
+
+        .features-section {
+            padding: 60px 20px;
+            max-width: 960px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .features-section h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            margin-right: 20px;
+            color: #e67e22;
+            font-size: 2em;
+        }
+
+        .feature-details h3 {
+            font-family: 'Roboto', sans-serif;
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .feature-details p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 25px 20px;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        .icon-facil-uso::before { content: '⚙️ '; }
+        .icon-transcripcion-exacta::before { content: '🎤 '; }
+        .icon-multi-idioma::before { content: '🌐 '; }
+        .icon-portatil::before { content: '🎒 '; }
+        .icon-bateria-larga::before { content: '🔋 '; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VozALetra™</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="caracteristicas.html">Características</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="redes_sociales.html">Redes Sociales</a></li>
+            <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+
+    <section class="features-section">
+        <h2>Características del VozALetra Silver Pro</h2>
+        <ul class="feature-list">
+            <li class="feature-item">
+                <span class="feature-icon icon-facil-uso"></span>
+                <div class="feature-details">
+                    <h3>Fácil de Usar</h3>
+                    <p>Interfaz intuitiva y sencilla para comenzar a transcribir al instante. No requiere configuraciones complejas.</p>
+                </div>
+            </li>
+            <li class="feature-item">
+                <span class="feature-icon icon-transcripcion-exacta"></span>
+                <div class="feature-details">
+                    <h3>Transcripción de Alta Precisión</h3>
+                    <p>Tecnología avanzada de reconocimiento de voz que garantiza una transcripción precisa y confiable.</p>
+                </div>
+            </li>
+            <li class="feature-item">
+                <span class="feature-icon icon-multi-idioma"></span>
+                <div class="feature-details">
+                    <h3>Soporte Multi-Idioma</h3>
+                    <p>Transcribe voz en varios idiomas, incluyendo español, inglés, francés, alemán y más.</p>
+                </div>
+            </li>
+            <li class="feature-item">
+                <span class="feature-icon icon-portatil"></span>
+                <div class="feature-details">
+                    <h3>Diseño Portátil y Ligero</h3>
+                    <p>Llévalo contigo a donde quieras. Su diseño compacto y ligero lo hace ideal para estudiantes, profesionales y viajeros.</p>
+                </div>
+            </li>
+            <li class="feature-item">
+                <span class="feature-icon icon-bateria-larga"></span>
+                <div class="feature-details">
+                    <h3>Batería de Larga Duración</h3>
+                    <p>Disfruta de sus 7 horas de autonomia para una transcripción continua.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 VozALetra™</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll("a[href]");
+            links.forEach(link => {
+                const url = new URL(link.href);
+                if (url.hostname === window.location.hostname) {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        document.body.classList.add("fade-out");
+                        setTimeout(() => {
+                            window.location.href = link.href;
+                        }, 300);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
